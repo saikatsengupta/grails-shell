@@ -8,6 +8,7 @@ import com.cmt.domain.Store
 class BootStrap {
 
     def init = { servletContext ->
+            //Loaded dummy data to display the dashboard
             def customer,customer1,customer2,customer3,customer4
             if (Customer.count() == 0) {
                 customer =new Customer(firstName: 'John', lastName: 'Doe', address1:'XXXX',address2:'AAAAA',city:'Madison',state:'WI',zip:'53719',dateofBirth:new Date())
