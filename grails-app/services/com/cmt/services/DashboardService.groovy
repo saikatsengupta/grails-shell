@@ -1,5 +1,6 @@
-package com.cmt.domain
+package com.cmt.services
 
+import com.cmt.domain.OrderTrans
 import grails.transaction.Transactional
 import groovy.sql.Sql
 

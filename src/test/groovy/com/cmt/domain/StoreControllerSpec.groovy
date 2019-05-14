@@ -1,6 +1,6 @@
 package com.cmt.domain
 
-import controller.StoreController
+import com.cmt.controller.StoreController
 import grails.test.mixin.*
 import spock.lang.*
 

@@ -1,4 +1,4 @@
-package com.cmt.domain
+package com.cmt.services
 
 import grails.transaction.Transactional
 

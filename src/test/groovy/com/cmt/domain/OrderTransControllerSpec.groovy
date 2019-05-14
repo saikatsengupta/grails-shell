@@ -1,6 +1,6 @@
 package com.cmt.domain
 
-import controller.OrderTransController
+import com.cmt.controller.OrderTransController
 import grails.test.mixin.*
 import spock.lang.*
 

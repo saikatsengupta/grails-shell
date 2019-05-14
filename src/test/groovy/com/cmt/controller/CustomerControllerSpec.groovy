@@ -1,13 +1,12 @@
 package com.cmt.controller
 
-import com.cmt.domain.Customer
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
 /**
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
-@TestFor(com.cmt.controller.CustomerController)
+@TestFor(CustomerController)
 class CustomerControllerSpec extends Specification  {
 
     def setup() {

@@ -61,7 +61,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="typeofGoods">Type of Goods</label>
-            <input type="text" class="form-control" name="typeofGoods" id="typeofGoods" value=""  maxlength="100" placeholder="Grocery,Jewellery,Kids Clothes...">
+            <input type="text" class="form-control" name="typeofGoods" id="typeofGoods" value="" required="true" maxlength="100" placeholder="Grocery,Jewellery,Kids Clothes...">
         </div>
 
     </div>

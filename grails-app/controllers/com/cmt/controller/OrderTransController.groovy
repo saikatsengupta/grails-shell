@@ -1,7 +1,7 @@
-package controller
+package com.cmt.controller
 
 import com.cmt.domain.Customer
-import com.cmt.domain.OrderTranService
+import com.cmt.services.OrderTranService
 import com.cmt.domain.OrderTrans
 import com.cmt.domain.Store
 import com.cmt.domain.Item
@@ -70,8 +70,7 @@ class OrderTransController {
 
         orderTrans.id =UUID.randomUUID()
 
-        orderTranService.save(orderTrans)
-        flush:true
+        orderTrans.save flush:true
 
         request.withFormat {
             form multipartForm {
@@ -100,8 +99,7 @@ class OrderTransController {
             return
         }
 
-        orderTranService.save(orderTrans)
-        flush:true
+        orderTrans.save flush:true
 
 
         request.withFormat {
@@ -122,8 +120,7 @@ class OrderTransController {
             return
         }
         def customerId = orderTrans?.customer?.id
-        orderTranService.delete(orderTrans)
-        flush:true
+        orderTrans.delete flush:true
 
 
         request.withFormat {

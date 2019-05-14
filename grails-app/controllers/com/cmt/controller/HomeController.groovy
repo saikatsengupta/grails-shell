@@ -1,7 +1,7 @@
-package controller
+package com.cmt.controller
 
 import com.cmt.domain.Customer
-import com.cmt.domain.DashboardService
+import com.cmt.services.DashboardService
 import com.cmt.domain.Item
 import com.cmt.domain.Store
 

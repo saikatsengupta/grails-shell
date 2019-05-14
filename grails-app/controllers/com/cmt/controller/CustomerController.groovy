@@ -1,6 +1,6 @@
 package com.cmt.controller
 
-import com.cmt.domain.CustomerService
+import com.cmt.services.CustomerService
 import com.cmt.domain.OrderTrans
 
 import static org.springframework.http.HttpStatus.*

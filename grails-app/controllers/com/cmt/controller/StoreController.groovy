@@ -1,9 +1,9 @@
-package controller
+package com.cmt.controller
 
 import com.cmt.domain.Item
 import com.cmt.domain.OrderTrans
 import com.cmt.domain.Store
-import com.cmt.domain.StoreService
+import com.cmt.services.StoreService
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional

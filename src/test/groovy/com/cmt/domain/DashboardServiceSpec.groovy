@@ -1,5 +1,6 @@
 package com.cmt.domain
 
+import com.cmt.services.DashboardService
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 
