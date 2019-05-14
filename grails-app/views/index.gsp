@@ -1,96 +1,138 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta name="layout" content="main"/>
-        <title>Grails Shell</title>
-    </head>
-    <body>
-        <div class="row">
-            <div class="col-md-4">
+<head>
+    <meta name="layout" content="main" />
+    <g:set var="entityName" value="${message(code: 'customer.label', default: 'Dashboard')}" />
 
-                <div id="status" role="complementary">
 
-                    <div id="application-status" class="panel panel-default">
-                        <div class="panel-heading">
-                            <h2 class="panel-title">Application Status</h2>
-                        </div>
-                        <div class="panel-body">
-                            <dl class="dl-horizontal">
-                                <dt>Environment:</dt>
-                                <dd>${grails.util.Environment.current.name}</dd>
-                                <dt>App profile:</dt>
-                                <dd>${grailsApplication.config.grails?.profile}</dd>
-                                <dt>App version:</dt>
-                                <dd><g:meta name="info.app.version"/></dd>
-                                <dt>Grails version:</dt>
-                                <dd><g:meta name="info.app.grailsVersion"/></dd>
-                                <dt>Groovy version:</dt>
-                                <dd>${GroovySystem.getVersion()}</dd>
-                                <dt>JVM version:</dt>
-                                <dd>${System.getProperty('java.version')}</dd>
-                                <dt>Reloading active:</dt>
-                                <dd>${grails.util.Environment.reloadingAgentEnabled}</dd>
-                            </dl>
-                        </div>
-                    </div>
+    <g:javascript>
+        $(document).ready(function($) {
+            $(".table-row").click(function() {
+                window.document.location = $(this).data("href");
+            });
 
-                    <div id="artefacts" class="panel panel-default">
-                        <div class="panel-heading">
-                            <h2 class="panel-title">Artefacts</h2>
-                        </div>
-                        <div class="panel-body">
-                            <dl class="dl-horizontal">
-                                <dt>Controllers:</dt>
-                                <dd>${grailsApplication.controllerClasses.size()}</dd>
-                                <dt>Domains:</dt>
-                                <dd>${grailsApplication.domainClasses.size()}</dd>
-                                <dt>Services:</dt>
-                                <dd>${grailsApplication.serviceClasses.size()}</dd>
-                                <dt>Tag Libraries:</dt>
-                                <dd>${grailsApplication.tagLibClasses.size()}</dd>
-                            </dl>
-                        </div>
-                    </div>
 
-                    <div id="installed-plugins" class="panel panel-default">
-                        <div class="panel-heading">
-                            <h2 class="panel-title">Installed Plugins</h2>
-                        </div>
-                        <div class="panel-body">
-                            <dl class="dl-horizontal">
-                                <g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-                                    <dt>${plugin.name}:</dt>
-                                    <dd>${plugin.version}</dd>
-                                </g:each>
-                            </dl>
-                        </div>
-                    </div>
+        });
 
-                </div>
-            </div>
+    </g:javascript>
 
-            <div class="col-md-8">
-                <div id="page-body" role="main">
-                    <div id="controller-list" role="navigation" class="panel panel-default">
-                        <div class="panel-heading">
-                            <h2 class="panel-title">Welcome to Grails Shell</h2>
-                        </div>
-                        <div class="panel-body">
-                            <p>Congratulations, you have successfully started your first Grails application! At the moment, this is the default page (Check out the <code>UrlMappings</code> class to see why). Feel free to modify it to either redirect to a controller or display whatever content you may choose. Below is a list of controllers that are currently deployed in this application, click on each to execute its default action:</p>
-                            <g:if test="${grailsApplication.controllerClasses.size() > 0}">
-                                <ul>
-                                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                                        <li class="controller"><g:link controller="${c.logicalPropertyName}">${message(code: c.propertyName.minus('Controller') + '.label')}</g:link></li>
-                                    </g:each>
-                                </ul>
-                            </g:if>
-                            <g:else>
-                                <p><em>There aren't any controllers yet.</em></p>
-                            </g:else>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <title><g:message code="default.create.label" args="[entityName]" /></title>
+</head>
+<body>
+
+
+<h1>Welcome to Champion Dashboard !!!!</h1>
+<h4 style="color:blue">(You can click on any of the dashboard rows to see navigate in detail.)</h4>
+
+<div class="form-row">
+    <div class="form-group col-md-12" >
+    </div>
+</div>
+<div class="form-row">
+
+    <div class="form-group col-md-4" style="border-style: double;">
+        <div class="content scaffold-list" role="main">
+            <h3>Top 3 Customers</h3>
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Total Purchase (in $)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <g:each var="topcustomer" in="${topcustomersMapResults}">
+
+                    <tr class="table-row" data-href="/customer">
+
+                        <td>${topcustomer?.key}</td>
+                        <td><g:formatNumber number="${topcustomer?.value}" type="currency" currencyCode="USD" /></td>
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
         </div>
-    </body>
+    </div>
+    <div class="form-group col-md-1">
+    </div>
+    <div class="form-group col-md-4" style="border-style: double;">
+        <div  class="content scaffold-list" role="main" >
+            <h3>Top 3 Stores</h3>
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">Store Name</th>
+                    <th scope="col">Total Purchase (in $)</th></tr>
+                </thead>
+                <tbody>
+                <g:each var="topstore" in="${topstoresMapResults}">
+
+                    <tr class="table-row" data-href="/store">
+
+                        <td>${topstore?.key}</td>
+                        <td><g:formatNumber number="${topstore?.value}" type="currency" currencyCode="USD" /></td>
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-12" >
+    </div>
+</div>
+<div class="form-row">
+    <div class="form-group col-md-4" style="border-style: double;">
+        <div class="content scaffold-list" role="main">
+            <h3>Top 3 Items Sold</h3>
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">Item Name (Store Name)</th>
+                    <th scope="col">Total qty </th>
+                </tr>
+                </thead>
+                <tbody>
+                <g:each var="topitem" in="${topitemsMapResults}">
+
+                    <tr class="table-row" data-href="/item">
+
+                        <td>${topitem?.key}</td>
+                        <td><g:formatNumber number="${topitem?.value}" type="number" /></td>
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-group col-md-1">
+    </div>
+    <div class="form-group col-md-4" style="border-style: double;">
+        <div  class="content scaffold-list" role="main" >
+            <h3>Top 3 Dates Items sold</h3>
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">Transaction Date</th>
+                    <th scope="col">Total Items Sold</th></tr>
+                </thead>
+                <tbody>
+                <g:each var="topdate" in="${topdatesMapResults}">
+                <tr class="table-row" data-href="/orderTrans/?sortName=transDate">
+
+                    <td>${topdate?.value}</td>
+                    <td><g:formatNumber number="${topdate?.key}" type="number" /></td>
+                </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="form-group col-md-3">
+    </div>
+</div>
+</body>
 </html>
