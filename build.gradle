@@ -7,6 +7,7 @@ buildscript {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.14.1"
         classpath "org.grails.plugins:hibernate5:${gormVersion-".RELEASE"}"
+        classpath 'com.moowork.gradle:gradle-node-plugin:0.4'
     }
 }
 
@@ -19,6 +20,7 @@ apply plugin:"war"
 apply plugin:"org.grails.grails-web"
 apply plugin:"org.grails.grails-gsp"
 apply plugin:"asset-pipeline"
+apply plugin: 'node'
 
 repositories {
     mavenLocal()
@@ -59,3 +61,11 @@ assets {
     minifyJs = true
     minifyCss = true
 }
+
+
+task testUnit(type: NpmTask) {
+    args = ['run', 'test-unit']
+
+}
+//include js unit tests into project build lifecycle
+test.dependsOn testUnit
