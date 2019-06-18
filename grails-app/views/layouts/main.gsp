@@ -13,6 +13,7 @@
 
 
         <g:layoutHead/>
+        <asset:javascript src="customer.js"/>
         <asset:javascript src="application.js"/>
         <asset:deferredScripts/>
         <g:javascript>

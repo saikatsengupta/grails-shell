@@ -23,6 +23,7 @@
 
 <h1>Welcome to Champion Dashboard !!!!</h1>
 <h4 style="color:blue">(You can click on any of the dashboard rows to see navigate in detail.)</h4>
+<input type="button" id="clickMe" name="clickMe" value=" Please Click Me !!!!" />
 
 <div class="form-row">
     <div class="form-group col-md-12" >

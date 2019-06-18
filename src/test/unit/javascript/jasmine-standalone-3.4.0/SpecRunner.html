@@ -8,19 +8,50 @@
   <link rel="stylesheet" href="lib/jasmine-3.4.0/jasmine.css">
 
   <script src="lib/jasmine-3.4.0/jasmine.js"></script>
+  <script src="lib/jasmine-3.4.0/jquery.js"></script>
   <script src="lib/jasmine-3.4.0/jasmine-html.js"></script>
   <script src="lib/jasmine-3.4.0/boot.js"></script>
+  <script src="lib/jasmine-3.4.0/jasmine-jquery.js"></script>
+
 
   <!-- include source files here... -->
   <script src="src/Player.js"></script>
   <script src="src/Song.js"></script>
+  <script src="src/customer.js"></script>
 
   <!-- include spec files here... -->
-  <script src="spec/SpecHelper.js"></script>
-  <script src="spec/PlayerSpec.js"></script>
+  <script src="spec/TestSpec.js"></script>
+  <script>
+      $( document ).ready(function() {
+          $(".mybtn").click(function(){
+              $(".div").hide();
+
+          });
+
+          $(".mybtn1").click(function(){
+              $(".div").show();
+
+          });
+
+      });
+
+  </script>
+  <style>
+
+    .mybtn {
+      display: inline-block;
+    }
+    .mybtn1 {
+      display: inline-block;
+    }
+  </style>
 
 </head>
 
 <body>
+<div id="1" class="div">Lets Play With Jasmine</div>
+<input type="button" class="mybtn" value="Hide Div" />
+<input type="button" class="mybtn1"  value="Un Hide Div" />
+
 </body>
 </html>
